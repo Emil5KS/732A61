@@ -1,0 +1,10 @@
+Nämn att jag testat euclidean
+EM 
+K Means 
+Heirarkisk
+
+Sedan slog jag över till Manhattan
+EM
+K Means
+Hierarkisk, den verkade lovande men att använda single link kändes dumt 
+så jag testade först Complete-link och sist Ward’s som ägde (ish)
