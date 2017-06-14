@@ -22,5 +22,18 @@ wantedvar<- c(6,8:9,11:12,14:17,19:23,27,31)
 
 
 length(VarExplain)
-xtable(cbind(abbrivations,VarExplain)[wantedvar,],
-       caption = "Variables used in clustering and visualization")
+print(xtable(cbind(abbrivations,VarExplain)[,],
+       caption = "All variables collected"),include.rownames = FALSE)
+
+
+xtable(totalk,
+       caption = "EM algorithm 10 cluster result: non-shooting stats")
+
+xtable(shooting,
+       caption = "EM algorithm 10 cluster result: shooting stats")
+
+xtable(other,
+       caption = "EM algorithm 10 cluster result: non-shooting stats")
+
+print(xtable(typicalplayers,
+       caption = "Cluster lables and typical members"),include.rownames = FALSE)

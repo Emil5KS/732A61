@@ -6,7 +6,26 @@ plot(y = fullset$PTS, x = fullset$MIN, col = k10$class)
 
 table(fullset$PLAYER,k10$class)
 
-fullset$PLAYER[k10$class == 10]
+
+typicalplayers <- matrix(ncol=5,nrow = 10)
+
+typicalplayers[,2] <- as.character(1:10)
+for (i in 1:10){
+typicalplayers[i,3:5]  <- as.character(fullset$PLAYER[k10$class == i][1:3])
+}
+  
+  
+shooting <- cbind(k10$nc,
+                  aggregate(fullset[,wantedvar[2:7]],by = list(k10$class), FUN = mean ))
+other <- cbind(k10$nc,
+               aggregate(fullset[,wantedvar[-c(2:7)]],by = list(k10$class), FUN = mean))
+totalk <- cbind(nc=k10$nc,
+                aggregate(fullset[,wantedvar],by = list(k10$class), FUN = mean ))
+
+totalk <- totalk[,c(2,1,3:ncol(totalk))]
+other <- other[,c(2,1,3:ncol(other))]
+shooting <- shooting[,c(2,1,3:ncol(shooting))]
+
 
 ############## Gammalt skräp
 x1<- cbind(fullset$OREG,fullset$DREB,fullset$AST)
