@@ -37,3 +37,37 @@ xtable(other,
 
 print(xtable(typicalplayers,
        caption = "Cluster lables and typical members"),include.rownames = FALSE)
+
+
+
+cbind(k10$class,)
+a1 <- c(as.character(idplay$x$`01`))
+a2 <- c(as.character(idplay$x$`02`))
+a3 <- c(as.character(idplay$x$`03`))
+a4 <- c(as.character(idplay$x$`04`))
+a5 <- c(as.character(idplay$x$`05`))
+a6 <- c(as.character(idplay$x$`06`))
+a7 <- c(as.character(idplay$x$`07`))
+a8 <- c(as.character(idplay$x$`08`))
+a9 <- c(as.character(idplay$x$`09`))
+a10 <- c(as.character(idplay$x$`10`))
+
+a <- matrix(NA,nrow = 10, ncol = 41)
+
+a[1,] <- c(as.character(idplay$x$`01`),rep(NA, (41 - length(a1))) )
+a[2,] <- c(as.character(idplay$x$`02`),rep(NA, (41 - length(a2))) )
+a[3,] <- c(as.character(idplay$x$`03`),rep(NA, (41 - length(a3))) )
+a[4,] <- c(as.character(idplay$x$`04`),rep(NA, (41 - length(a4))) )
+a[5,] <- c(as.character(idplay$x$`05`),rep(NA, (41 - length(a5))) )
+a[6,] <- c(as.character(idplay$x$`06`),rep(NA, (41 - length(a6))) )
+a[7,] <- c(as.character(idplay$x$`07`),rep(NA, (41 - length(a7))) )
+a[8,] <- c(as.character(idplay$x$`08`),rep(NA, (41 - length(a8))) )
+a[9,] <- c(as.character(idplay$x$`09`),rep(NA, (41 - length(a9))) )
+a[10,] <- c(as.character(idplay$x$`10`),rep(NA, (41 - length(a10))) )
+
+
+a <- cbind(paste("Cluster",(1:10)),a)
+t(a)
+print(xtable(t(a[1:4,-2])),include.rownames = FALSE,include.colnames = FALSE)
+
+print(xtable(t(a[5:10,-2])),include.rownames = FALSE,include.colnames = FALSE)

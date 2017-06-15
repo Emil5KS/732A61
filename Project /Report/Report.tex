@@ -26,7 +26,7 @@
 
 \section{Introduction}
 
-Basketball is one of the largest and most popular sports in the world . It is a team sport where two teams fielding five players each trying to put the ball through the opponents’ basket with the team scoring most points being the winning side. One team usually fields different types players according to their given position, this is a position given arbitrary given the players physical appearance. \cite{wikibasket} The goal is to find new positions clustering algorithms given data rather than the traditional approach. The project will focus on analyzing data collected from the National Basket Association (NBA) which is today regarded as the league with has the highest level of professional basketball.
+Basketball is one of the largest and most popular sport in the world. It is a team sport where two teams fielding five players each trying to put the ball through the opponents’ basket with the team scoring most points being the winning side. One team usually fields different types of players according to their given position, this is a position given arbitrary given the players physical appearance.\cite{wikibasket} The goal is to find new positions using clustering algorithms given data rather than the traditional approach. The project will focus on analyzing data collected from the National Basket Association (NBA) which is today regarded as the league with has the highest level of professional basketball.
  
 This project is loosely based around an paper written by Dwight Lutz called \textit{A Cluster Analysis of NBA Players} \cite{lutz2012cluster} which revolves around finding clusters of NBA-players (basketball players) and giving them a new class-labeled for basketball players positions on court.
 
@@ -49,20 +49,20 @@ Traditionally players are labeled according to the respective task on the court,
 Small and fast players are often referred to as guards (point guard/shooting guard) with main focus on handeling, distributing and scoring. Tall and strong players are labeled (power/small-) forward or center. The small forward task i mainly scoring and grabbing rebounds while Power forward and Center have a bigger role in setting screens for smaller players and grabbing rebounds, there is no formal way of determining what position a player should be according to these five current positions and it is up to coaches to decide this and this affects the way the player on the position play and acts.
 
 
-In the modern NBA something that is called “position less basketball” have gained popularity with many coaches moving away from defining their players according to the classic positions and playing different line ups with players which traditionally would play on the same position. \cite{positonbasketball} This trend has led to journalists inventing more labels to describe players in order to find some structure.
+In the modern NBA something that is called “positionless basketball” have gained popularity with many coaches moving away from defining their players according to the classic positions and playing different line ups with players which traditionally would play on the same position.\cite{positonbasketball} This trend has led to journalists inventing more labels to describe players in order to find some structure.
 
 
 
 \subsection{Objective}
 
 
-The goal with this project will be to via multivariate cluster analysis identify new and more appropriate labels for players defined by their performance on the court rather than traditional perceptions. A qualative and quantative analysis of the clusters and members of the different clusters will be done to evaluate and discuss the quality of the result along with comparison to the result in Dwight Lutz called "A Cluster Analysis of NBA Players".
+The goal with this project will be to via multivariate cluster analysis identify new and more appropriate labels for players defined by their performance on the court rather than traditional perceptions. A qualitative and quantitative analysis of the clusters and members of the different clusters will be done to evaluate and discuss the quality of the result along with comparison to the result in Dwight Lutz called "A Cluster Analysis of NBA Players".
 
 
 
 \section{Variables}
 
-The data collected are from NBAs webpage nba.com using web scraping tools and some pre-processing. The set in total contains 33 different variables from 271 players during the season of 2015-2016 where all variables were aggregated by average per game. Players playing under 40 games were excluded from the data set since only frequently used player are of interest to find belongings to. The decision to only use data from one year instead of over consecutive years was determined by the context of the project. Seeing how the trend of so called possitionless basketball is a relatively new phenomena having data spanning over multiple years might wash away characteristics of averages for players that have been in the league during multiple years. The down side of this is the problem of having to few observations may lead to clusters being hard to define since a lower amount of observations. In the table below all variables used in the clustering are presented.
+The data collected are from NBAs webpage nba.com using web scraping tools and some pre-processing. The set in total contains 33 different variables from 271 players during the season of 2015-2016 where all variables were aggregated by average per game. Players playing under 40 games were excluded from the data set since only frequently used player are of interest to find belongings to. The decision to only use data from one year instead of over consecutive years was determined by the context of the project. Seeing how the trend of so called positionless basketball is a relatively new phenomena having data spanning over multiple years might wash away characteristics of averages for players that have been in the league during multiple years. The down side of this is the problem of having to few observations may lead to clusters being hard to define since a lower amount of observations. In the table below all variables used in the clustering are presented.
 
 \begin{table}[ht]
 \centering
@@ -116,9 +116,9 @@ It uses conditional probabilities $p_{i|j}$  to model the high dimensional proba
 
 $$C = KL(P||Q)=\sum_i\sum_jp_{ij}log(\frac{p_{ij}}{q_{ij}})$$
 
-The minimization technique used is gradient decent which iteratively walks through the space in order to find a local minimum with a selected step size in proportion to the second derivative of the cost function also known as the gradient.
+The minimization technique used is gradient decent which iteratively walks through the space in order to find a local minimum with a selected step size in proportion to the first derivative of the cost function also known as the gradient.
 
-The variance in the kernels are set by the parameter perplexity which i a tunable hyper parameter that tries to catch the relationship between the local and the global structure of the data in order to preserve it in the low dimensional space. According to the authors of the paper the algorithm provides stable results for values between 5 and 50, in this project different perplexity values will be explored and evaluated. \cite{ictdbid:2777}
+The variance in the kernels are set by the parameter perplexity which is a tunable hyperparameter that tries to catch the relationship between the local and the global structure of the data in order to preserve it in the low dimensional space. According to the authors of the paper the algorithm provides stable results for values between 5 and 50, in this project different perplexity values will be explored and evaluated.\cite{ictdbid:2777}
 
 The implementation used is implemented in R and is from the package "tsne".
 
@@ -133,7 +133,7 @@ In this project a mixture of Gaussians will be used due to the fact that it is t
 
 All of the observed data points are denoted X and the unobserved (Also called latent variables) points are denoted Z. These two variables are assumed to each have some sort of probability distribution given a unknown parameter $theta$. In the case of clustering the cluster-group is considerd to be unkown and is denoted as the latent variable in this case. Combining these two distributions will give us our joint distribution. From here the algorithm starts iterating through the two steps, the Expectation-step and the second one being the maximization - step.
 
-In the E-step we calculate the probability for each observation in Z belonging too the different cluster labels given the data and a current estimate of this parameter theta that we are updating.
+In the E-step we calculate the probability for each observation in Z belonging too the different cluster labels given the data and a current estimate of this parameter $theta$ that we are updating. Since this project uses gaussian kernels this $theta$ is actually two parameters, $\mathbf{\mu}_k$ and $\mathbf{\Sigma}_k$ that we are using and updating.
 
 
 $$\gamma(z_{nk}) = \frac{\pi_k N(x_n|\mathbf{\mu}_k,\mathbf{\Sigma}_k)} {\sum_{j=1}^{K}  \pi_jN(x_n|\mathbf{\mu}_j,\mathbf{\Sigma}_j)}$$
@@ -148,11 +148,11 @@ $$ \pi_k^{new}= \frac{N_k}{N} $$
 where
 $$  N_k = \sum_{n=1}^N \gamma(z_{nk})$$
 
-With the new parameters we evaluate the log of likelihood with these newly updated parameter and check if we have found a stable result, if not, these two steps are repeated back and forth until an stable is found or the max number of iterations is reached. Since the joint likelihood function is almost always multimodal the algorithm is only guaranteed to find a local optimum.
+With the new parameters we evaluate the log of likelihood with these newly updated parameters and check if we have found a stable result, if not, these two steps are repeated back and forth until an stable is found or the max number of iterations is reached. Since the joint likelihood function is almost always multimodal the algorithm is only guaranteed to find a local optimum.
 
-This updating procedure means that the observations are not hard-assigned to one cluster until convergence (via argmax) but instead given a probability to be in each cluster allowing for more dynamical clustering approach to the data in the way that it is able to find different density regions in the data. \cite{Bishop:2006:PRM:1162264}
+This updating procedure means that the observations are not hard-assigned to one cluster until convergence (via argmax) but instead given a probability to be in each cluster allowing for more dynamical clustering approach to the data in the way that it is able to find different density regions in the data.\cite{Bishop:2006:PRM:1162264}
 
-The cluster size was set to 10 to be able to compare the result with the previously mentioned paper \textit{A Cluster Analysis of NBA Players} \cite{lutz2012cluster}
+The cluster size was set to 10 to be able to compare the result with the previously mentioned paper \textit{A Cluster Analysis of NBA Players}\cite{lutz2012cluster}
 
 
 %Kanske lite om relationen till K-means för att runda upp det hela? 
@@ -162,11 +162,11 @@ The cluster size was set to 10 to be able to compare the result with the previou
 
 \newpage
 
-\section{Results}
+\section{Results and analysis}
 
 \subsection{Visualization with t-SNE}
 
-The process of finding a good visualization for t-SNE for this project started out with a sequence of 5 different values from 10 to 50 to try to get a feeling for how the algorithm handled the data. On all levels of perplexity the algorithm seemed to not any noticeable changes in minimizing the cost function after around 1500 iterations. For the perplexity number the lower values of perplexity seem to yield better separation between visually identified clusters. The projections placement in relationship to each other were often time close to each other independent of the perplexity setting. Of the five initial runs values a perplexity of 10 was determined to be the best and values 5 and 15 for perplexity were explored to try to see the general trend of how the projections behaved. When trying a perplexity above 10 the separation seemed to be washing away a bit. For values in the lower range with a perplexity of 5 the separation seems to be increasing but observations were in very small clusters of two to ten players in each cluster. To try to find a good balance between the local and global structure in the projection the final perplexity was set to 10 which is here presented.
+The process of finding a good visualization for t-SNE for this project started out with a sequence of 5 different values from 10 to 50 to try to get a feeling for how the algorithm handled the data. On all levels of perplexity the algorithm seemed to not any noticeable changes in minimizing the cost function after around 1500 iterations. For the perplexity number the lower values of perplexity seem to yield better separation between visually identified clusters. The projections placement in relationship to each other were often time close to each other independent of the perplexity setting. Of the five initial runs values a perplexity of 10 was determined to be the best and values 5 and 15 for perplexity were explored to try to see the general trend of how the projections behaved. When trying a perplexity above 10 the separation seemed to be washing away a bit. For values in the lower range with a perplexity of 5 the separation seems to be increasing but observations were in very small clusters of two to ten players in each cluster. To try to find a good balance between the local and global structure in the projection the final perplexity was set to 10 which is presented here.
 
 \begin{figure}[H]
  \centering
@@ -175,7 +175,7 @@ The process of finding a good visualization for t-SNE for this project started o
  \label{figure:1}
 \end{figure}
 
-In the graph above a fairly large group consisting of around 30-40 observations that are located in the right corner of the graph. In the middle of the graph a larger amount of observations seems to be scattered around with some observations being closer together and might even be considered clusters. In general observations tend to be smaller sub clusters closer to each other although the large cluster is separated from the other observations. In the bottom right there also seems to be a cluster of points separated from the middle. From the bottom middle leaning towards top left is a oblong shaped point spread that is fairly separated from the middle as well. In the following graph ill zoom in on the cluster in the bottom right frame of the scatterplot to be able to present which players the points represent. Overall the observations in the different clusters look somewhat similar although there are some players that seems to be out of placed compared to its neighbors.
+In the graph above a fairly large group consisting of around 30-40 observations that are located in the right corner of the graph. In the middle of the graph a larger amount of observations seems to be scattered around with some observations being closer together and might even be considered clusters. In general observations tend to be smaller sub clusters closer to each other although the large cluster is separated from the other observations. In the bottom right there also seems to be a cluster of points separated from the middle. From the bottom middle leaning towards top left is a oblong shaped point spread that is fairly separated from the middle as well.The following graph is zoomed in on the cluster in the bottom right frame of the scatterplot to be able to present which players the points represent. Overall the observations in the different clusters look somewhat similar although there are some players that seems to be out of place compared to their neighbors.
 
 %In the top left there also seem to be an almost oval shaped cluster with players.  The 
 
@@ -195,7 +195,7 @@ In this part of the graph we can see some of the player and their respective nam
  
 \subsection{Clustering} 
 
-The EM algorithm with 10 clusters converged and below is the unstandardized averages for each cluster presented.
+The EM algorithm with 10 clusters converged and below is the unstandardized averages for each cluster presented. In Appendix B the result for all players are presented.
 
 \begin{table}[ht]
 \centering
@@ -269,9 +269,11 @@ Cluster lables & Cluster & Typical players  &  &  \\
 \caption{Cluster lables and typical players} 
 \end{table}
 
-Cluster 1 and 3 are quite similar with distinctions in that player from cluster 1 takes more shots and makes them at a similar percentage in just a bit longer time on the court. Another difference between them seems to be the distance they run, players from cluster 1 run about 1500 feet longer than the players from cluster 3, this is probably mostly attributed by the fact that they play for extended minutes compared to cluster 3. When inspecting the players in the clusters the only difference noticeable is what roles the players have in their respective teams, where most players from cluster 1 have an more offensive role in general and the other ones are more of defensive-minded players and playmakers. Cluster two consists of players that on average preform less in all categories than the previously named clusters but also play less minutes.
+Due to limitations of the report not all clusters will be presented or discussed in the report, all player's cluster belonging is presented in Appendix B.  
 
-The fourth clusters consist of players on average attempting less than one shot outside the three-point line a game with low accuracy. But these players shoot frequently and with good percentage. They also grab a lot of offensive rebounds and averages the most blocked shots among the clusters. They do this while still moving a lot but at a slower pace than other clusters. The player in this cluster are the best big players of the game at the moment and the cluster is therefor called "Elite Bigs". Compared to cluster 4 cluster 5 consists of player with similar features but with less shots attempted and made. The big difference is that they move at a lot higher average speed than in cluster 4 and 8. Cluster 8 shares similar traits to the fourth and fifth clusters but almost never attempt any 3 points shots and when they do its at an low percentage, they also move on average among the least distance of the clusters. When inspecting these cluster these are players who have roles clearly defined as the traditional center position with a bigger role on defense.
+Cluster 1 and 3 are quite similar with distinctions in that player from cluster 1 takes more field goal attempts and makes them at a similar percentage in just a bit longer time on the court. Another difference between them seems to be the distance they run, players from cluster 1 run about 1500 feet longer than the players from cluster 3, this is probably mostly attributed by the fact that they play for extended minutes compared to cluster 3. When inspecting the players in the clusters the only difference noticeable is what roles the players have in their respective teams, where most players from cluster 1 have an more offensive role in general and the other ones are more of defensive-minded players and playmakers. Cluster two consists of players that on average perform less in all categories than the previously named clusters but also play less minutes.
+
+The fourth clusters consist of players on average attempting less than one shot outside the three-point line a game with low accuracy. But these players shoot frequently and with good percentage. They also grab a lot of offensive rebounds and averages the most blocked shots among the clusters. They do this while still moving a lot but at a slower pace than other clusters. The player in this cluster are the best big players of the game at the moment and the cluster is therefore called "Elite Bigs". Compared to cluster 4 cluster 5 consists of player with similar features but with less shots attempted and made. The big difference is that they move at a lot higher average speed than in cluster 4 and 8. Cluster 8 shares similar traits to the fourth and fifth clusters but almost never attempt any 3 points shots and when they do its at an low percentage, they also move on average among the least distance of the clusters. When inspecting these cluster these are players who have roles clearly defined as the traditional center position with a bigger role on defense.
 
 The most clear cut cluster is number 6 where basically every variable is above all other cluster, these are players who score at a high rate with good accuracy and overall considered to be their respective teams best players.
 
@@ -286,22 +288,22 @@ The biggest cluster is cluster 9 which consists of players shooting relatively f
  \label{figure:2}
 \end{figure}
 
-In the middle region the cluster belongings from the EM-algorithm are dispersed and dose not land close to each on the visualization other than small groups of 2-3 players. In the right region of the graph a couple of the players from cluster 6 are close together and below them another group of players from cluster 9 are relatively close to each other. In the top of the graph some observations from clusters 2,4 and 8 all have some observations that are close together cluster vise and in the visualization.
+In the middle region the cluster belongings from the EM-algorithm are dispersed and does not land close to each on the visualization other than small groups of 2-3 players. In the right region of the graph a couple of the players from cluster 6 are close together and below them another group of players from cluster 9 are relatively close to each other. In the top of the graph some observations from clusters 2,4 and 8 all have some observations that are close together cluster vise and in the visualization.
 
 
 \newpage
 
 \section{Discussion}
 
-In conclusion of this project the t-SNE visualizations did not yield a enough satisfactory visualization, in some parts of the graph players that seem similar based on empirical knowledge are close together but then the algorithm puts them close to other players that instinctively seems different close to them. A need for a critical mind set is needed to use t-SNE because some of the quick confirmations gives you the indication that you have succeeded but if reviewed closely it could as well be random noise.
+In conclusion of this project the t-SNE visualizations did not yield a enough satisfactory visualization, in some parts of the graph players that seem similar based on empirical knowledge are close together but then the algorithm puts them close to other players that instinctively seem different to them. A need for a critical mindset is needed to use t-SNE because some of the quick confirmations gives you the indication that you have succeeded but if reviewed closely it could as well be random noise.
 
-The EM-algorithm did in some sense give a satisfactory clustering and compared to Lutz article the clusters found are quite similar although the data material I’m using doesn’t contain the same player the tendencies seem to be similar in the clusters with some clusters with high preforming players and players that are tall and big forming different clusters given their skillsets. Some players seem a bit misplaced at times and some are obviously wrongly defined by the cluster but it’s hard to draw the line between what could be considered belonging to the wrong cluster and what is newly uncovered information.
+The EM-algorithm did in some sense give a satisfactory clustering and compared to Lutz article the clusters found are quite similar although the data material I’m using doesn’t contain the same player. The tendencies seem to be similar in the clusters with some clusters with high performing players and players that are tall and big forming different clusters given their skillsets. Some players seem a bit misplaced at times and some are obviously wrongly defined by the cluster but it’s hard to draw the line between what could be considered belonging to the wrong cluster and what is newly uncovered information.
 
-One thing that I think would improve my clustering would be to combine the distance covered in feet and average speed with some of the variables that Lutz uses in his paper where the shooting percentages are divided in to multiple parts and combined with the number of attempts. Overall I think much of the improvement in clustering of NBA players lies within the variables themselves and not the algorithms used, points, assists and such fail to describe parts of the game as defensive efforts like setting screens. Another example is how many times a player makes a pass, the assists recorded are only assists directly leading to a score. Many of these variables are recorded but not directly available online which makes it time consuming to get a hold of.
+One thing that I think would improve my clustering would be to combine the distance covered in feet and average speed with some of the variables that Lutz uses in his paper where the shooting percentages are divided into multiple parts and combined with the number of attempts. Overall I think much of the improvement in clustering of NBA players lies within the variables themselves and not the algorithms used, points, assists and such fail to describe parts of the game as defensive efforts like setting screens. Another example is how many times a player makes a pass, the assists recorded are only assists directly leading to a score. Many of these variables are recorded but not directly available online which makes it time consuming to get a hold of.
 
-Another part that I haven’t discussed and noticed over the time of the project is that many of the variables are dependent on how many minutes the players are playing and simple solution to it is to have the variables observed per minute instead of a per game average. While at first it seems reasonable it doesn't take in to consideration that playing 30 minutes of basketball on a high level and preforming at a similar rate as someone that only plays 10 minutes on a per minute basis is a lot harder and is a key factor in the game.
+Another part that I haven’t discussed and noticed over the time of the project is that many of the variables are dependent on how many minutes the players are playing and simple solution to it is to have the variables observed per minute instead of a per game average. While at first it seems reasonable it doesn't take in to consideration that playing 30 minutes of basketball on a high level and performing at a similar rate as someone that only plays 10 minutes on a per minute basis is a lot harder and is a key factor in the game.
 
-For further studies on the subject it would be interesting in a larger project to compare players cluster belongings over different seasons and compare them to their starting cluster to the last cluster with aid of association analysis algorithms as FP-growth. For further visualization comparisons between t-SNE and other dimensionality reductions techniques would be interesting and see if there are better alternatives.
+For further studies on the subject it would be interesting in a larger project to compare players cluster belongings over different seasons and compare them to their starting cluster to the last cluster with aid of association analysis algorithms such as FP-growth. For further visualization comparisons between t-SNE and other dimensionality reductions techniques would be interesting and see if there are better alternatives.
 
 %Deciding between 5-10 the improvments were tought because what could be improvments could as likely be assigned as random.
  %This indicates that the algorithm manages to capture some of the local structure of the data regardless of the perplexity. 
@@ -359,6 +361,119 @@ PLAYER\_ID & Identification for player \\
 \end{tabular}
 \caption{All variables collected} 
 \end{table}
+
+\newpage
+
+\subsection{Appendix B}
+
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llll}
+  \hline
+  \hline
+Cluster 1 & Cluster 2 & Cluster 3 & Cluster 4 \\ 
+  Klay Thompson & Enes Kanter & Jeff Teague & Anthony Davis \\ 
+  Kawhi Leonard & Shabazz Muhammad & Lou Williams & Brook Lopez \\ 
+  CJ McCollum & Derrick Williams & Jae Crowder & Karl-Anthony Towns \\ 
+  Dirk Nowitzki & Jeremy Lamb & Jamal Crawford & Nikola Vucevic \\ 
+  Kobe Bryant & Luis Scola & Deron Williams & LaMarcus Aldridge \\ 
+  Rudy Gay & Gerald Henderson & Darren Collison & Paul Millsap \\ 
+  Ryan Anderson & Jon Leuer & Monta Ellis & Giannis Antetokounmpo \\ 
+  Kevin Love & Meyers Leonard & Chandler Parsons & Pau Gasol \\ 
+  Jordan Clarkson & JaMychal Green & Trevor Ariza & Derrick Favors \\ 
+  Zach Randolph & Bobby Portis & JR Smith & Andre Drummond \\ 
+  Avery Bradley & Boris Diaw & Luol Deng & Greg Monroe \\ 
+  Thaddeus Young & Leandro Barbosa & Gary Harris & Al Horford \\ 
+  Tobias Harris & Mike Scott & Joe Johnson & Kristaps Porzingis \\ 
+  Rodney Hood & Trey Lyles & George Hill & Hassan Whiteside \\ 
+  Kentavious Caldwell-Pope & Trevor Booker & Markieff Morris & Draymond Green \\ 
+  Will Barton & Dwight Powell & Omri Casspi & Dwight Howard \\ 
+  Robert Covington & Richard Jefferson & Nikola Mirotic & Marcin Gortat \\ 
+  Arron Afflalo & Andrew Bogut & CJ Miles & Jonas Valanciunas \\ 
+  Wesley Matthews & Anthony Tolliver & Jeff Green & DeAndre Jordan \\ 
+  Marvin Williams & Quincy Acy & Harrison Barnes & Serge Ibaka \\ 
+  Julius Randle & Nemanja Bjelica & Kent Bazemore & Kenneth Faried \\ 
+  Zaza Pachulia & JaKarr Sampson & Otto Porter & Nerlens Noel \\ 
+   & Sasha Vujacic & Bojan Bogdanovic & Gorgui Dieng \\ 
+   & Kyle Anderson & Isaiah Canaan & Rudy Gobert \\ 
+   & Jonas Jerebko & Evan Turner &  \\ 
+   & Brandon Rush & Ersan Ilyasova &  \\ 
+   & Joe Ingles & Jared Sullinger &  \\ 
+   & Chase Budinger & Mario Chalmers &  \\ 
+   & Kelly Oubre Jr. & Marco Belinelli &  \\ 
+   & Noah Vonleh & Al-Farouq Aminu &  \\ 
+   & Ian Clark & Matt Barnes &  \\ 
+   & Kyle Singler & Dion Waiters &  \\ 
+   & Mike Muscala & Raymond Felton &  \\ 
+   & Luc Mbah a Moute & Marcus Smart &  \\ 
+   & Johnny O'Bryant III & PJ Tucker &  \\ 
+   & Chris Johnson &  &  \\ 
+   & Tayshaun Prince &  &  \\ 
+   &  &  &  \\ 
+   &  &  &  \\ 
+   &  &  &  \\ 
+   &  &  &  \\ 
+   \hline
+\end{tabular}%
+}
+\end{table}
+
+
+
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llllll}
+  \hline
+  \hline
+Cluster 5 & Cluster 6 & Cluster 7 & Cluster 8 & Cluster 9 & Cluster 10 \\ 
+  Myles Turner & Stephen Curry & Marcus Thornton & Robin Lopez & Jrue Holiday & Mirza Teletovic \\ 
+  Terrence Ross & James Harden & Gerald Green & Ian Mahinmi & Derrick Rose & Kelly Olynyk \\ 
+  Hollis Thompson & Kevin Durant & Wayne Ellington & Alex Len & JJ Redick & Nikola Jokic \\ 
+  Doug McDermott & DeMarcus Cousins & Aaron Brooks & Jordan Hill & Victor Oladipo & Ramon Sessions \\ 
+  Aaron Gordon & LeBron James & Patrick Patterson & Taj Gibson & Evan Fournier & Manu Ginobili \\ 
+  Cody Zeller & Damian Lillard & Vince Carter & Tim Duncan & Goran Dragic & Rodney Stuckey \\ 
+  Steven Adams & Russell Westbrook & PJ Hairston & Joffrey Lauvergne & Jabari Parker & Austin Rivers \\ 
+  Tristan Thompson & DeMar DeRozan & Paul Pierce & Amir Johnson & Zach LaVine & Tony Allen \\ 
+  Ben McLemore & Paul George & Channing Frye & Jason Smith & Devin Booker & Lance Stephenson \\ 
+  E'Twaun Moore & Isaiah Thomas & Jason Terry & Brandon Bass & D'Angelo Russell & Devin Harris \\ 
+  Frank Kaminsky & Carmelo Anthony & Markel Brown & Tyson Chandler & Emmanuel Mudiay & D.J. Augustin \\ 
+  Garrett Temple & Kyle Lowry & Randy Foye & Marreese Speights & Ish Smith & Darrell Arthur \\ 
+  Danny Green & Jimmy Butler & Anthony Morrow & David West & Tony Parker & Corey Brewer \\ 
+  Willie Cauley-Stein & Kemba Walker & Tony Snell & Clint Capela & Jeremy Lin & Andre Iguodala \\ 
+  Maurice Harkless & Andrew Wiggins & Charlie Villanueva & Kosta Koufos & Dennis Schroder & Wesley Johnson \\ 
+  Dante Cunningham & John Wall & Solomon Hill & Ed Davis & J.J. Barea & Thabo Sefolosha \\ 
+  Larry Nance Jr. & Gordon Hayward & Rashad Vaughn & Aron Baynes & Elfrid Payton & Raul Neto \\ 
+  Andre Roberson & Chris Paul & Pablo Prigioni & Timofey Mozgov & Trey Burke & Ty Lawson \\ 
+  Alonzo Gee & Dwyane Wade &  & Tyler Zeller & Allen Crabbe & Jerian Grant \\ 
+   & Reggie Jackson &  & Alexis Ajinca & Ricky Rubio & Ronnie Price \\ 
+   & Khris Middleton &  & Roy Hibbert & Patrick Beverley & Steve Blake \\ 
+   & Nicolas Batum &  & Bismack Biyombo & Jerami Grant &  \\ 
+   & Marcus Morris &  & Cole Aldrich & Courtney Lee &  \\ 
+   & Rajon Rondo &  & Lavoy Allen & Kyle Korver &  \\ 
+   &  &  & Miles Plumlee & Mason Plumlee &  \\ 
+   &  &  & Kyle O'Quinn & Toney Douglas &  \\ 
+   &  &  & Dewayne Dedmon & Patty Mills &  \\ 
+   &  &  & Thomas Robinson & Cory Joseph &  \\ 
+   &  &  & Omer Asik & Nik Stauskas &  \\ 
+   &  &  & Nick Collison & Lance Thomas &  \\ 
+   &  &  &  & Stanley Johnson &  \\ 
+   &  &  &  & Jared Dudley &  \\ 
+   &  &  &  & Langston Galloway &  \\ 
+   &  &  &  & Jose Calderon &  \\ 
+   &  &  &  & Matthew Dellavedova &  \\ 
+   &  &  &  & Shane Larkin &  \\ 
+   &  &  &  & Donald Sloan &  \\ 
+   &  &  &  & Justise Winslow &  \\ 
+   &  &  &  & Shaun Livingston &  \\ 
+   &  &  &  & TJ McConnell &  \\ 
+   &  &  &  & Mario Hezonja &  \\ 
+   \hline
+\end{tabular}%
+}
+\end{table}
+
 
 \end{document}
 

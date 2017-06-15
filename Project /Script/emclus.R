@@ -4,8 +4,7 @@ k10 <-   emcluster(X, EM10K, assign.class = TRUE)
 summary(k10)
 plot(y = fullset$PTS, x = fullset$MIN, col = k10$class)
 
-table(fullset$PLAYER,k10$class)
-
+fullset$PLAYER,k10$class
 
 typicalplayers <- matrix(ncol=5,nrow = 10)
 
@@ -25,6 +24,17 @@ totalk <- cbind(nc=k10$nc,
 totalk <- totalk[,c(2,1,3:ncol(totalk))]
 other <- other[,c(2,1,3:ncol(other))]
 shooting <- shooting[,c(2,1,3:ncol(shooting))]
+
+
+
+
+
+idplay <- aggregate(fullset$PLAYER, by = list(k10$class), FUN = function(x){x} )
+
+
+
+
+
 
 
 ############## Gammalt skräp
