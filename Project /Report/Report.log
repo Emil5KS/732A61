@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.24)  15 JUN 2017 10:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.24)  15 JUN 2017 12:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -445,6 +445,25 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box28
 \@float@everytoks=\toks23
 \@floatcapt=\box29
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2016/04/23 3.9r The Babel package
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2012/08/20 v3.3p English support from the babel system
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2016/04/23 3.9r Babel common definitions
+\babel@savecnt=\count101
+\U@D=\dimen114
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (./Report.aux
 
 LaTeX Warning: Label `figure:2' multiply defined.
@@ -452,30 +471,30 @@ LaTeX Warning: Label `figure:2' multiply defined.
 )
 \openout1 = `Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
  (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count101
-\scratchdimen=\dimen114
+\scratchcounter=\count102
+\scratchdimen=\dimen115
 \scratchbox=\box30
-\nofMPsegments=\count102
-\nofMParguments=\count103
+\nofMPsegments=\count103
+\nofMParguments=\count104
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count104
-\MPscratchDim=\dimen115
-\MPnumerator=\count105
-\makeMPintoPDFobject=\count106
+\MPscratchCnt=\count105
+\MPscratchDim=\dimen116
+\MPnumerator=\count106
+\makeMPintoPDFobject=\count107
 \everyMPtoPDFconversion=\toks25
 ) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
@@ -528,7 +547,7 @@ e
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3] [4]
-Overfull \hbox (16.22168pt too wide) in paragraph at lines 116--117
+Overfull \hbox (16.22168pt too wide) in paragraph at lines 123--124
 []\OT1/cmr/m/n/10 The im-ple-men-ta-tion used is im-ple-mented in R and is from
  the pack-age "tsne". 
  []
@@ -536,12 +555,12 @@ Overfull \hbox (16.22168pt too wide) in paragraph at lines 116--117
 [5] [6] [7] <tsne10.pdf, id=37, 505.89pt x 505.89pt>
 File: tsne10.pdf Graphic file (type pdf)
  <use tsne10.pdf>
-Package pdftex.def Info: tsne10.pdf used on input line 166.
+Package pdftex.def Info: tsne10.pdf used on input line 173.
 (pdftex.def)             Requested size: 227.62523pt x 227.62204pt.
  [8 <./tsne10.pdf>] <zoom10.pdf, id=46, 433.62pt x 433.62pt>
 File: zoom10.pdf Graphic file (type pdf)
  <use zoom10.pdf>
-Package pdftex.def Info: zoom10.pdf used on input line 180.
+Package pdftex.def Info: zoom10.pdf used on input line 187.
 (pdftex.def)             Requested size: 227.62082pt x 227.62204pt.
  [9 <./zoom10.pdf>]
 
@@ -550,19 +569,19 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [10] <tsnecluster2.pdf, id=58, 433.62pt x 433.62pt>
 File: tsnecluster2.pdf Graphic file (type pdf)
  <use tsnecluster2.pdf>
-Package pdftex.def Info: tsnecluster2.pdf used on input line 277.
+Package pdftex.def Info: tsnecluster2.pdf used on input line 284.
 (pdftex.def)             Requested size: 284.54257pt x 284.52756pt.
 
-[11] [12 <./tsnecluster2.pdf>] [13] [14] (./Report.aux)
+[11] [12 <./tsnecluster2.pdf>] (./Report.bbl [13]) [14] [15] (./Report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2534 strings out of 493014
- 32945 string characters out of 6133351
- 110882 words of memory out of 5000000
- 6035 multiletter control sequences out of 15000+600000
+ 3024 strings out of 493014
+ 39175 string characters out of 6133351
+ 122547 words of memory out of 5000000
+ 6507 multiletter control sequences out of 15000+600000
  9988 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,10n,23p,1208b,235s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -578,10 +597,10 @@ l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
 exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texl
 ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Report.pdf (14 pages, 211632 bytes).
+Output written on Report.pdf (15 pages, 218536 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+ 119 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

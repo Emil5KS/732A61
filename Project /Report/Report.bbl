@@ -1,0 +1,29 @@
+\begin{thebibliography}{1}
+
+\bibitem{Bishop:2006:PRM:1162264}
+Christopher~M. Bishop.
+\newblock {\em Pattern Recognition and Machine Learning (Information Science
+  and Statistics)}.
+\newblock Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
+
+\bibitem{positonbasketball}
+Chris Herring.
+\newblock The rise of the position-less player.
+\newblock The Wall Street Journal, June 2012.
+
+\bibitem{lutz2012cluster}
+Dwight Lutz.
+\newblock A cluster analysis of nba players.
+\newblock In {\em Proceedings of the MIT Sloan Sports Analytics Conference},
+  2012.
+
+\bibitem{ictdbid:2777}
+Laurens van~der Maaten and Geoffrey~E. Hinton.
+\newblock Visualizing high-dimensional data using t-sne.
+\newblock {\em Journal of Machine Learning Research}, 9:2579--2605, 2008.
+
+\bibitem{wikibasket}
+Wikipedia.
+\newblock Basketball {W}ikipedia{,} the free encyclopedia, 2017.
+
+\end{thebibliography}

@@ -5,27 +5,31 @@
 \usepackage{color}  %plottarna
 \usepackage{amsmath}
 \usepackage{float} % Få plott fan att stanna 
+\usepackage[english]{babel} %ingen aning om varför desperat copy paste
+\usepackage{url} %för längar 
 
 \title{Player positions in the NBA \\
 \large  732A61 Data Mining \\
  Clustering and Association Analysis }
-\author{Emil Klasson Svensson }
-\date{Linköping University \\
-June 2017}
+\author{Emil Klasson Svensson
+ \\IDA, Statistics and Data Mining
+\\Linköping University
+\\emisv463@student.liu.se}
+\date{June 2017}
+
 
 \begin{document}
 
 \maketitle
-
+\thispagestyle{empty}
 \newpage
 
 \section{Introduction}
 
-Basketball is one of the largest and most popular sports in the world (citation, wiki). It is a team sport where two teams fielding five players each trying to put the ball through the opponents’ basket with the team scoring most points being the winning side. One team usually fields different types players according to their given position, this is a position given arbitrary given the players physical appearance. The goal is to find new positions clustering algorithms given data rather than the traditional approach. The project will focus on analyzing data collected from the National Basket Association (NBA) which is today regarded as the league with has the highest level of professional basketball.
-
-
-This project is loosely based around an article written by Dwight Lutz called ???A Cluster Analysis of NBA Players??? which revolves around finding clusters of NBA-players (basketball players) and giving them a new class-labeled for basketball players positions on court.
+Basketball is one of the largest and most popular sports in the world . It is a team sport where two teams fielding five players each trying to put the ball through the opponents’ basket with the team scoring most points being the winning side. One team usually fields different types players according to their given position, this is a position given arbitrary given the players physical appearance. \cite{wikibasket} The goal is to find new positions clustering algorithms given data rather than the traditional approach. The project will focus on analyzing data collected from the National Basket Association (NBA) which is today regarded as the league with has the highest level of professional basketball.
  
+This project is loosely based around an paper written by Dwight Lutz called \textit{A Cluster Analysis of NBA Players} \cite{lutz2012cluster} which revolves around finding clusters of NBA-players (basketball players) and giving them a new class-labeled for basketball players positions on court.
+
 
 %\subsection{What is Basketball?}
 
@@ -45,9 +49,12 @@ Traditionally players are labeled according to the respective task on the court,
 Small and fast players are often referred to as guards (point guard/shooting guard) with main focus on handeling, distributing and scoring. Tall and strong players are labeled (power/small-) forward or center. The small forward task i mainly scoring and grabbing rebounds while Power forward and Center have a bigger role in setting screens for smaller players and grabbing rebounds, there is no formal way of determining what position a player should be according to these five current positions and it is up to coaches to decide this and this affects the way the player on the position play and acts.
 
 
-In the modern NBA something that is called “position less basketball” have gained popularity with many coaches moving away from defining their players according to the classic positions and playing different line ups with players which traditionally would play on the same position. (citation?) This trend has led to journalists inventing more labels to describe players in order to find some structure.
+In the modern NBA something that is called “position less basketball” have gained popularity with many coaches moving away from defining their players according to the classic positions and playing different line ups with players which traditionally would play on the same position. \cite{positonbasketball} This trend has led to journalists inventing more labels to describe players in order to find some structure.
+
+
 
 \subsection{Objective}
+
 
 The goal with this project will be to via multivariate cluster analysis identify new and more appropriate labels for players defined by their performance on the court rather than traditional perceptions. A qualative and quantative analysis of the clusters and members of the different clusters will be done to evaluate and discuss the quality of the result along with comparison to the result in Dwight Lutz called "A Cluster Analysis of NBA Players".
 
@@ -111,7 +118,7 @@ $$C = KL(P||Q)=\sum_i\sum_jp_{ij}log(\frac{p_{ij}}{q_{ij}})$$
 
 The minimization technique used is gradient decent which iteratively walks through the space in order to find a local minimum with a selected step size in proportion to the second derivative of the cost function also known as the gradient.
 
-The variance in the kernels are set by the parameter perplexity which i a tunable hyper parameter that tries to catch the relationship between the local and the global structure of the data in order to preserve it in the low dimensional space. According to the authors of the paper the algorithm provides stable results for values between 5 and 50, in this project different perplexity values will be explored and evaluated.
+The variance in the kernels are set by the parameter perplexity which i a tunable hyper parameter that tries to catch the relationship between the local and the global structure of the data in order to preserve it in the low dimensional space. According to the authors of the paper the algorithm provides stable results for values between 5 and 50, in this project different perplexity values will be explored and evaluated. \cite{ictdbid:2777}
 
 The implementation used is implemented in R and is from the package "tsne".
 
@@ -143,9 +150,9 @@ $$  N_k = \sum_{n=1}^N \gamma(z_{nk})$$
 
 With the new parameters we evaluate the log of likelihood with these newly updated parameter and check if we have found a stable result, if not, these two steps are repeated back and forth until an stable is found or the max number of iterations is reached. Since the joint likelihood function is almost always multimodal the algorithm is only guaranteed to find a local optimum.
 
-This updating procedure means that the observations are not hard-assigned to one cluster until convergence (via argmax) but instead given a probability to be in each cluster allowing for more dynamical clustering approach to the data in the way that it is able to find different density regions in the data.
+This updating procedure means that the observations are not hard-assigned to one cluster until convergence (via argmax) but instead given a probability to be in each cluster allowing for more dynamical clustering approach to the data in the way that it is able to find different density regions in the data. \cite{Bishop:2006:PRM:1162264}
 
-The cluster size was set to 10 to be able to compare the result with previous studies.
+The cluster size was set to 10 to be able to compare the result with the previously mentioned paper \textit{A Cluster Analysis of NBA Players} \cite{lutz2012cluster}
 
 
 %Kanske lite om relationen till K-means för att runda upp det hela? 
@@ -299,6 +306,12 @@ For further studies on the subject it would be interesting in a larger project t
 %Deciding between 5-10 the improvments were tought because what could be improvments could as likely be assigned as random.
  %This indicates that the algorithm manages to capture some of the local structure of the data regardless of the perplexity. 
 
+
+
+\bibliographystyle{plain}
+\bibliography{732A61ref-1.bib}
+
+\newpage
 
 \section{Appendix}
 \subsection{Appendix A}
